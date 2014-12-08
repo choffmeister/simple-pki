@@ -1,3 +1,5 @@
 ca/
 certs/
 crl/
+etc/*.conf
+!etc/examples/*.conf
