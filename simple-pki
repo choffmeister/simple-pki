@@ -4,7 +4,7 @@ OPENSSL_BIN="/usr/bin/openssl"
 
 function to_filename {
   echo "$1" \
-    | sed 's/\([^a-zA-Z0-9]\)/\-/g'
+    | sed 's/\([^a-zA-Z0-9\.\-_]\)/\-/g'
 }
 
 function create_configuration {
