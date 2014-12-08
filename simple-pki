@@ -9,13 +9,9 @@ function to_filename {
 
 function create_configuration {
   read -p "1. Organization Name (e.g. My Company Inc.) " ORGANIZATION_NAME
-  read -p "2. Main Domain       (e.g. mycompany.com)   " MAIN_DOMAIN
-  MAIN_DOMAIN_PARTS=($(echo $MAIN_DOMAIN | tr "." "\n"))
 
   for FILE_NAME in "root-ca" "signing-ca" "server" "email"; do
     cat "etc/examples/$FILE_NAME.conf" \
-      | sed "s/%domainComponent0%/${MAIN_DOMAIN_PARTS[1]}/" \
-      | sed "s/%domainComponent1%/${MAIN_DOMAIN_PARTS[0]}/" \
       | sed "s/%organizationName%/$ORGANIZATION_NAME/" \
       > "etc/$FILE_NAME.conf"
   done
